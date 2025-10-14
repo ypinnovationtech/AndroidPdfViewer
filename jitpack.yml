@@ -1,6 +1,6 @@
 jdk:
   - openjdk17
 before_install:
-  - echo "Building AndroidPdfViewer via JitPack"
+  - echo "Building Android library with AndroidX enabled"
 install:
-  - ./gradlew clean assembleRelease publishToMavenLocal -x test
+  - ./gradlew clean assembleRelease -x test
