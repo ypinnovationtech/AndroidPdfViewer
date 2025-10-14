@@ -57,15 +57,7 @@ afterEvaluate {
     publishing {
         publications {
             create("release", MavenPublication) {
-                def releaseComponent = components.findByName("release")
-                if(releaseComponent != null) {
-                    from releaseComponent
-                }
-                else {
-                    println("⚠️ Component 'release' not found, skip publications.")
-                }
-
-                // Metadata library
+                artifact("$buildDir/outputs/aar/android-pdf-viewer-release.aar")
                 groupId = 'com.github.barteksc'
                 artifactId = 'android-pdf-viewer'
                 version = '3.2.5'
