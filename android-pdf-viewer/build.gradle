@@ -5,6 +5,9 @@ plugins {
 
 apply plugin: 'com.android.library'
 
+group = 'com.github.barteksc'
+version = '3.2.5'
+
 ext {
     bintrayRepo = 'maven'
     bintrayName = 'android-pdf-viewer'
@@ -54,7 +57,15 @@ afterEvaluate {
     publishing {
         publications {
             create("release", MavenPublication) {
-                from components.findByName("release")
+                def releaseComponent = components.findByName("release")
+                if(releaseComponent != null) {
+                    from releaseComponent
+                }
+                else {
+                    println("⚠️ Component 'release' not found, skip publications.")
+                }
+
+                // Metadata library
                 groupId = 'com.github.barteksc'
                 artifactId = 'android-pdf-viewer'
                 version = '3.2.5'
