@@ -9,13 +9,8 @@ buildscript {
         }
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.4.2'
-        //classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.8.5'
+        classpath 'com.android.tools.build:gradle:8.3.2'
         classpath("org.codehaus.groovy.modules.http-builder:http-builder:0.7.1")
-        classpath("com.jfrog.bintray.gradle:gradle-bintray-plugin:1.8.5") {
-            exclude group: "org.codehaus.groovy.modules.http-builder", module: "http-builder"
-        }
-        classpath 'com.github.dcendents:android-maven-gradle-plugin:2.1'
     }
 }
 
