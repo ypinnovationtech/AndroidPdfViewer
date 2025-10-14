@@ -4,6 +4,7 @@ plugins {
 }
 
 apply plugin: 'com.android.library'
+apply plugin: 'maven-publish'
 
 group = 'com.github.barteksc'
 version = '3.2.5'
@@ -57,10 +58,15 @@ afterEvaluate {
     publishing {
         publications {
             create("release", MavenPublication) {
-                artifact("$buildDir/outputs/aar/android-pdf-viewer-release.aar")
+                from components.release
                 groupId = 'com.github.barteksc'
                 artifactId = 'android-pdf-viewer'
                 version = '3.2.5'
+            }
+        }
+        repositories {
+            maven {
+                url = uri("$buildDir/repo")
             }
         }
     }
