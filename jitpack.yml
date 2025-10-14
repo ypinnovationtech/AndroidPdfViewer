@@ -3,4 +3,4 @@ jdk:
 before_install:
   - echo "Starting build on JitPack"
 install:
-  - ./gradlew clean build publishToMavenLocal -x test
+  - ./gradlew clean assembleRelease -x test
