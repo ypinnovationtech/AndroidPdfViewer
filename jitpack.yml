@@ -1,6 +1,4 @@
 jdk:
   - openjdk17
-before_install:
-  - echo "Starting build on JitPack"
 install:
-  - ./gradlew clean assembleRelease -x test
+  - ./gradlew clean assembleRelease publishToMavenLocal -x test
