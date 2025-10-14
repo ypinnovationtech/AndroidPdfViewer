@@ -4,7 +4,7 @@ plugins {
 }
 
 group = 'com.github.barteksc'
-version = '3.2.5'
+version = '3.2.6'
 
 android {
     namespace 'com.github.barteksc.pdfviewer'
@@ -13,12 +13,19 @@ android {
     defaultConfig {
         minSdkVersion 21
         targetSdkVersion 34
-        versionCode 2
-        versionName "3.2.5"
+        versionCode 1
+        versionName "3.2.6"
+        consumerProguardFiles "consumer-rules.pro"
     }
 
     lint {
         abortOnError false
+    }
+
+    publishing {
+        singleVariant("release") {
+            withSourcesJar()
+        }
     }
 }
 
@@ -27,23 +34,23 @@ dependencies {
     api 'com.github.barteksc:pdfium-android:1.9.0'
 }
 
-afterEvaluate {
-    publishing {
-        publications {
-            create("release", MavenPublication) {
-                from components.release
-                groupId = 'com.github.barteksc'
-                artifactId = 'android-pdf-viewer'
-                version = '3.2.5'
+publishing {
+    publications {
+        create("release", MavenPublication) {
+            afterEvaluate {
+                from(components.release)
             }
+            groupId = 'com.github.barteksc'
+            artifactId = 'android-pdf-viewer'
+            version = '3.2.6'
         }
-        repositories {
-            maven {
-                url = uri("$buildDir/repo")
-            }
-            maven {
-                url = uri("$buildDir/outputs/repo")
-            }
+    }
+    repositories {
+        maven {
+            url = uri("$buildDir/repo")
+        }
+        maven {
+            url = uri("$buildDir/outputs/repo")
         }
     }
 }
