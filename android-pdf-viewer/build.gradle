@@ -30,6 +30,7 @@ ext {
 }
 
 android {
+    namespace 'com.github.barteksc.pdfviewer'
     compileSdkVersion 28
 
     defaultConfig {
