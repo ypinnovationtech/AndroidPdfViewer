@@ -1,6 +1,4 @@
 jdk:
   - openjdk17
-before_install:
-  - echo "Building Android library with AndroidX enabled"
 install:
-  - ./gradlew clean assembleRelease -x test
+  - ./gradlew clean build publishToMavenLocal -x test
