@@ -35,23 +35,36 @@ dependencies {
     api 'com.github.barteksc:pdfium-android:1.9.0'
 }
 
-publishing {
-    publications {
-        create("release", MavenPublication) {
-            afterEvaluate {
-                from(components.release)
+afterEvaluate {
+    publishing {
+        publications {
+            create("release", MavenPublication) {
+                from(components["release"])
+                groupId = "com.github.barteksc"
+                artifactId = "android-pdf-viewer"
+                version = "3.2.6"
+
+                pom {
+                    name.set("AndroidPdfViewer")
+                    description.set("A fast PDF rendering library for Android")
+                    url.set("https://github.com/ypinnovationtech/AndroidPdfViewer")
+                    licenses {
+                        license {
+                            name.set("MIT License")
+                            url.set("https://opensource.org/licenses/MIT")
+                        }
+                    }
+                    developers {
+                        developer {
+                            id.set("barteksc")
+                            name.set("Bartek Chichoki")
+                        }
+                    }
+                    scm {
+                        url.set("https://github.com/ypinnovationtech/AndroidPdfViewer")
+                    }
+                }
             }
-            groupId = 'com.github.barteksc'
-            artifactId = 'android-pdf-viewer'
-            version = '3.2.6'
-        }
-    }
-    repositories {
-        maven {
-            url = uri("$buildDir/repo")
-        }
-        maven {
-            url = uri("$buildDir/outputs/repo")
         }
     }
 }
